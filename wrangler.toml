@@ -17,5 +17,5 @@ AWS_DEFAULT_REGION = "us-east-005"
 AWS_S3_BUCKET = "social-pawsitiv-space.s3.us-east-005.backblazeb2.com"
 
 [[env.prod.routes]]
-pattern = "media.pawsitiv.space/*"
+pattern = "media.pawsitiv.space"
 custom_domain = true
