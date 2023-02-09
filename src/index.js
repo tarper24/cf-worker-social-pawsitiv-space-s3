@@ -14,5 +14,9 @@ async function handleRequest(request) {
 	let url = new URL(request.url);
 	url.hostname = AWS_S3_BUCKET;
 	let signedRequest = await aws.sign(url);
+	let range = request.headers.get('range');
+	if (range) {
+		signedRequest.headers.set('range', range);
+	}
 	return await fetch(signedRequest, { "cf": { "cacheEverything": true } });
 }
