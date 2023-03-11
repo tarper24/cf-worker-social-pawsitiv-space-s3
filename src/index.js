@@ -18,5 +18,8 @@ async function handleRequest(request) {
 	if (range) {
 		signedRequest.headers.set('range', range);
 	}
+	if (url.pathname === '/' || url.pathname === '') {
+		return new Response('Not Found', { status: 404 });
+	}
 	return await fetch(signedRequest, { "cf": { "cacheEverything": true } });
 }
